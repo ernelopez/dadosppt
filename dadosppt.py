@@ -38,34 +38,62 @@ n = st.number_input("Cantidad de tiradas", min_value=1, value=10, step=1)
 def gana(a, b):
     a = a.lower()
     b = b.lower()
+
     if a == b:
         return 0
+
     if (a == "piedra" and b == "tijera") or \
        (a == "tijera" and b == "papel") or \
        (a == "papel" and b == "piedra"):
         return 1
+
     return -1
 
 if st.button("Tirar", disabled=not valido):
+
     resultados1 = []
     resultados2 = []
-    
-    g1 = g2 = emp = 0
 
-    for _ in range(n):
+    g1 = 0
+    g2 = 0
+    emp = 0
+
+    partidas = []
+
+    for i in range(1, n + 1):
+
         r1 = random.choice(caras1)
         r2 = random.choice(caras2)
-        
+
         resultados1.append(r1)
         resultados2.append(r2)
 
         res = gana(r1, r2)
+
         if res == 1:
             g1 += 1
+            resultado = "Victoria dado 1"
+
         elif res == -1:
             g2 += 1
+            resultado = "Victoria dado 2"
+
         else:
             emp += 1
+            resultado = "Empate"
+
+        total_no_empates = g1 + g2
+
+        if total_no_empates == 0:
+            prop = 0
+        else:
+            prop = g1 / total_no_empates
+
+        partidas.append({
+            "Partida": i,
+            "Resultado": resultado,
+            "Proporción victorias dado 1": round(prop, 3)
+        })
 
     # Conteos por dado
     c1 = Counter(resultados1)
@@ -73,8 +101,16 @@ if st.button("Tirar", disabled=not valido):
 
     df = pd.DataFrame({
         "Resultado": ["Piedra", "Papel", "Tijera"],
-        "Dado 1": [c1.get("Piedra", 0), c1.get("Papel", 0), c1.get("Tijera", 0)],
-        "Dado 2": [c2.get("Piedra", 0), c2.get("Papel", 0), c2.get("Tijera", 0)],
+        "Dado 1": [
+            c1.get("Piedra", 0),
+            c1.get("Papel", 0),
+            c1.get("Tijera", 0)
+        ],
+        "Dado 2": [
+            c2.get("Piedra", 0),
+            c2.get("Papel", 0),
+            c2.get("Tijera", 0)
+        ],
     })
 
     st.write("Frecuencias:")
@@ -84,3 +120,9 @@ if st.button("Tirar", disabled=not valido):
     st.write(f"Dado 1: {g1}")
     st.write(f"Dado 2: {g2}")
     st.write(f"Empates: {emp}")
+
+    st.write("Detalle de partidas:")
+
+    df_partidas = pd.DataFrame(partidas)
+
+    st.dataframe(df_partidas, hide_index=True)
