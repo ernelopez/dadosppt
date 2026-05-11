@@ -127,4 +127,22 @@ if st.button("Tirar", disabled=not valido):
 
     df_partidas = pd.DataFrame(partidas)
 
-    st.dataframe(df_partidas, hide_index=True)
+    df_partidas = df_partidas.astype({
+        "Ganadas dado 1": float,
+        "Ganadas dado 2": float,
+        "Empates": float
+    })
+
+    st.dataframe(
+        df_partidas.style.format({
+            "Ganadas dado 1": "{:.3f}",
+            "Ganadas dado 2": "{:.3f}",
+            "Empates": "{:.3f}",
+            "Prop. dado 1": "{:.3f}",
+            "Prop. dado 2": "{:.3f}",
+            "Prop. empates": "{:.3f}",
+        }),
+        hide_index=True,
+        use_container_width=True
+    )
+
