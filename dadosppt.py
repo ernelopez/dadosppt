@@ -3,7 +3,7 @@ import random
 from collections import Counter
 import pandas as pd
 
-st.title("simulador: piedra, papel o tijera (dos dados)")
+st.title("Torneo de dados: piedra, papel o tijera")
 
 default_text = "Piedra\nPiedra\nPapel\nPapel\nTijera\nTijera"
 opciones_validas = {"piedra", "papel", "tijera"}
@@ -82,17 +82,19 @@ if st.button("Tirar", disabled=not valido):
             emp += 1
             resultado = "Empate"
 
-        total_no_empates = g1 + g2
-
-        if total_no_empates == 0:
-            prop = 0
-        else:
-            prop = g1 / total_no_empates
+        prop_g1 = g1 / i
+        prop_g2 = g2 / i
+        prop_emp = emp / i
 
         partidas.append({
             "Partida": i,
             "Resultado": resultado,
-            "Proporción victorias dado 1": round(prop, 3)
+            "Ganadas dado 1": g1,
+            "Ganadas dado 2": g2,
+            "Empates": emp,
+            "Prop. dado 1": round(prop_g1, 3),
+            "Prop. dado 2": round(prop_g2, 3),
+            "Prop. empates": round(prop_emp, 3)
         })
 
     # Conteos por dado
