@@ -3,7 +3,7 @@ import random
 from collections import Counter
 import pandas as pd
 
-st.title("Torneo de dados: piedra, papel o tijera")
+st.title("simulador: piedra, papel o tijera (dos dados)")
 
 default_text = "Piedra\nPiedra\nPapel\nPapel\nTijera\nTijera"
 opciones_validas = {"piedra", "papel", "tijera"}
@@ -72,11 +72,11 @@ if st.button("Tirar", disabled=not valido):
 
         if res == 1:
             g1 += 1
-            resultado = "Victoria dado 1"
+            resultado = "1"
 
         elif res == -1:
             g2 += 1
-            resultado = "Victoria dado 2"
+            resultado = "2"
 
         else:
             emp += 1
@@ -88,13 +88,13 @@ if st.button("Tirar", disabled=not valido):
 
         partidas.append({
             "Partida": i,
-            "Resultado": resultado,
+            "Ganador": resultado,
             "Ganadas dado 1": g1,
             "Ganadas dado 2": g2,
             "Empates": emp,
-            "Prop. dado 1": round(prop_g1, 3),
-            "Prop. dado 2": round(prop_g2, 3),
-            "Prop. empates": round(prop_emp, 3)
+            "Prop. dado 1": prop_g1,
+            "Prop. dado 2": prop_g2,
+            "Prop. empates": prop_emp
         })
 
     # Conteos por dado
@@ -127,17 +127,8 @@ if st.button("Tirar", disabled=not valido):
 
     df_partidas = pd.DataFrame(partidas)
 
-    df_partidas = df_partidas.astype({
-        "Ganadas dado 1": float,
-        "Ganadas dado 2": float,
-        "Empates": float
-    })
-
     st.dataframe(
         df_partidas.style.format({
-            "Ganadas dado 1": "{:.3f}",
-            "Ganadas dado 2": "{:.3f}",
-            "Empates": "{:.3f}",
             "Prop. dado 1": "{:.3f}",
             "Prop. dado 2": "{:.3f}",
             "Prop. empates": "{:.3f}",
@@ -145,4 +136,3 @@ if st.button("Tirar", disabled=not valido):
         hide_index=True,
         use_container_width=True
     )
-
