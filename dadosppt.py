@@ -3,7 +3,7 @@ import random
 from collections import Counter
 import pandas as pd
 
-st.title("simulador: piedra, papel o tijera (dos dados)")
+st.title("Torneo de dados: piedra, papel o tijera")
 
 default_text = "Piedra\nPiedra\nPapel\nPapel\nTijera\nTijera"
 opciones_validas = {"piedra", "papel", "tijera"}
@@ -72,11 +72,11 @@ if st.button("Tirar", disabled=not valido):
 
         if res == 1:
             g1 += 1
-            resultado = "1"
+            resultado = "Dado 1"
 
         elif res == -1:
             g2 += 1
-            resultado = "2"
+            resultado = "Dado 2"
 
         else:
             emp += 1
