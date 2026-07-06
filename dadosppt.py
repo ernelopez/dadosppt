@@ -105,10 +105,10 @@ if st.button("Tirar", disabled=not valido):
             "Ganadas dado 1": g1,
             "Ganadas dado 2": g2,
             "Empates": emp,
-            "Prop. dado 1": prop_g1,
-            "Prop. dado 2": prop_g2,
-            "Prop. empates": prop_emp,
-            "Prop. G1 sin emp.": prop_g1_sin_emp
+            "Proporción dado 1": prop_g1,
+            "Proporción dado 2": prop_g2,
+            "Proporción empates": prop_emp,
+            "Proporción G1 sin emp.": prop_g1_sin_emp
         })
 
     # Conteos por dado
@@ -150,22 +150,22 @@ if st.button("Tirar", disabled=not valido):
             "Gan. dado 1": st.column_config.NumberColumn(width="small"),
             "Gan. dado 2": st.column_config.NumberColumn(width="small"),
             "Empates": st.column_config.NumberColumn(width="small"),
-            "Prop. dado 1": st.column_config.NumberColumn(
-                "Prop. dado 1",
+            "Proporción dado 1": st.column_config.NumberColumn(
+                "Proporción dado 1",
                 format="%.3f",
                 width="small",
             ),
-            "Prop. dado 2": st.column_config.NumberColumn(
-                "Prop. dado 2",
+            "Proporción dado 2": st.column_config.NumberColumn(
+                "Proporción dado 2",
                 format="%.3f",
                 width="small",
             ),
-            "Prop. empates": st.column_config.NumberColumn(
-                "Prop. emp.",
+            "Proporción empates": st.column_config.NumberColumn(
+                "Proporción empates",
                 format="%.3f",
                 width="small",
             ),
-            "Prop. G1 sin emp.": st.column_config.NumberColumn(
+            "Proporción G1 sin emp.": st.column_config.NumberColumn(
                 "Prop. G1\nsin emp.",
                 format="%.3f",
                 width="small",
