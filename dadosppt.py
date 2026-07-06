@@ -147,20 +147,20 @@ if st.button("Tirar", disabled=not valido):
         column_config={
             "Partida": st.column_config.NumberColumn(width="small"),
             "Ganador": st.column_config.TextColumn(width="small"),
-            "Ganadas dado 1": st.column_config.NumberColumn(width="small"),
-            "Ganadas dado 2": st.column_config.NumberColumn(width="small"),
+            "Gan. dado 1": st.column_config.NumberColumn(width="small"),
+            "Gan. dado 2": st.column_config.NumberColumn(width="small"),
             "Empates": st.column_config.NumberColumn(width="small"),
-            "Proporción dado 1": st.column_config.NumberColumn(
+            "Prop. dado 1": st.column_config.NumberColumn(
                 "Prop. dado 1",
                 format="%.3f",
                 width="small",
             ),
-            "Proporción dado 2": st.column_config.NumberColumn(
+            "Prop. dado 2": st.column_config.NumberColumn(
                 "Prop. dado 2",
                 format="%.3f",
                 width="small",
             ),
-            "Proporción empates": st.column_config.NumberColumn(
+            "Prop. empates": st.column_config.NumberColumn(
                 "Prop. emp.",
                 format="%.3f",
                 width="small",
