@@ -3,7 +3,7 @@ import random
 from collections import Counter
 import pandas as pd
 
-st.title("Torneo de dados: piedra, papel o tijera")
+st.title("Simulador de tiradas de dados: piedra, papel o tijera")
 
 default_text = "Piedra\nPiedra\nPapel\nPapel\nTijera\nTijera"
 opciones_validas = {"piedra", "papel", "tijera"}
@@ -118,12 +118,11 @@ if st.button("Tirar", disabled=not valido):
     st.write("Frecuencias:")
     st.dataframe(df, hide_index=True)
 
-    st.write("Victorias:")
-    st.write(f"Dado 1: {g1}")
-    st.write(f"Dado 2: {g2}")
+    st.write(f"Victorias Dado 1: {g1}")
+    st.write(f"Victorias Dado 2: {g2}")
     st.write(f"Empates: {emp}")
 
-    st.write("Detalle de partidas:")
+    st.write("Detalle de tiradas:")
 
     df_partidas = pd.DataFrame(partidas)
 
