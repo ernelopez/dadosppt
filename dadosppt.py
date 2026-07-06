@@ -92,9 +92,9 @@ if st.button("Tirar", disabled=not valido):
             "Ganadas dado 1": g1,
             "Ganadas dado 2": g2,
             "Empates": emp,
-            "Prop. dado 1": prop_g1,
-            "Prop. dado 2": prop_g2,
-            "Prop. empates": prop_emp
+            "Proporción dado 1": prop_g1,
+            "Proporción dado 2": prop_g2,
+            "Proporción empates": prop_emp
         })
 
     # Conteos por dado
@@ -128,9 +128,9 @@ if st.button("Tirar", disabled=not valido):
 
     st.dataframe(
         df_partidas.style.format({
-            "Prop. dado 1": "{:.3f}",
-            "Prop. dado 2": "{:.3f}",
-            "Prop. empates": "{:.3f}",
+            "Proporción dado 1": "{:.3f}",
+            "Proporción dado 2": "{:.3f}",
+            "Proporción empates": "{:.3f}",
         }),
         hide_index=True,
         use_container_width=True
