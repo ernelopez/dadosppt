@@ -17,11 +17,11 @@ default=["🪨 Piedra","🪨 Piedra","📄 Papel","📄 Papel","✂️ Tijera","
 c1,c2=st.columns(2)
 caras1=[];caras2=[]
 with c1:
-    st.subheader("🎲 Dado 1")
+    st.subheader("🔷 Dado 1")
     for i,d in enumerate(default):
         caras1.append(mapa[st.selectbox(f"Cara {i+1}",opciones,index=opciones.index(d),key=f"a{i}")])
 with c2:
-    st.subheader("🎲 Dado 2")
+    st.subheader("🔶 Dado 2")
     for i,d in enumerate(default):
         caras2.append(mapa[st.selectbox(f"Cara {i+1}",opciones,index=opciones.index(d),key=f"b{i}")])
 
@@ -42,9 +42,9 @@ if st.button("🎲 Tirar"):
         res1.append(a);res2.append(b)
         r=gana(a,b)
         if r==1:
-            g1+=1;gan="🎲 Dado 1"
+            g1+=1;gan="🔷 Dado 1"
         elif r==-1:
-            g2+=1;gan="🎲 Dado 2"
+            g2+=1;gan="🔶 Dado 2"
         else:
             emp+=1;gan="🤝 Empate"
         p1=g1/i;p2=g2/i;pe=emp/i
@@ -57,8 +57,8 @@ if st.button("🎲 Tirar"):
             prog.progress(i/n)
     prog.empty()
     cc1,cc2,cc3=st.columns(3)
-    cc1.metric("🏆 Victorias dado 1",g1)
-    cc2.metric("🏆 Victorias dado 2",g2)
+    cc1.metric("🔷 Victorias dado 1", g1)
+    cc2.metric("🔶 Victorias dado 2", g2)
     cc3.metric("🤝 Empates",emp)
     c1=Counter(res1);c2=Counter(res2)
     st.subheader("Frecuencias")
@@ -69,7 +69,7 @@ if st.button("🎲 Tirar"):
     }),hide_index=True,use_container_width=True)
     df=pd.DataFrame(partidas)
     st.subheader("Evolución de las proporciones")
-    st.line_chart(df.set_index("Partida")[["Proporción dado 1","Proporción dado 2","Proporción empates"]])
+    st.line_chart(df.set_index("Partida")[["Proporción 🔷","Proporción 🔶","Proporción empates"]])
     st.subheader("Detalle de tiradas")
     st.dataframe(df,hide_index=True,use_container_width=True,
         column_config={
