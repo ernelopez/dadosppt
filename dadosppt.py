@@ -77,7 +77,7 @@ if st.button("🎲 Tirar"):
     fig.add_trace(
         go.Scatter(
             x=df["Partida"],
-            y=df["Proporción dado 1"],
+            y=df["Proporción 🔷"],
             mode="lines",
             name="🔷 Dado 1",
             line=dict(color="royalblue", width=3),
@@ -87,7 +87,7 @@ if st.button("🎲 Tirar"):
     fig.add_trace(
         go.Scatter(
             x=df["Partida"],
-            y=df["Proporción dado 2"],
+            y=df["Proporción 🔶"],
             mode="lines",
             name="🔶 Dado 2",
             line=dict(color="darkorange", width=3),
