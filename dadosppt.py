@@ -69,7 +69,50 @@ if st.button("🎲 Tirar"):
     }),hide_index=True,use_container_width=True)
     df=pd.DataFrame(partidas)
     st.subheader("Evolución de las proporciones")
-    st.line_chart(df.set_index("Partida")[["Proporción 🔷","Proporción 🔶","Proporción empates"]])
+    #st.line_chart(df.set_index("Partida")[["Proporción 🔷","Proporción 🔶","Proporción empates"]])
+    import plotly.graph_objects as go
+    
+    fig = go.Figure()
+    
+    fig.add_trace(
+        go.Scatter(
+            x=df["Partida"],
+            y=df["Proporción dado 1"],
+            mode="lines",
+            name="🔷 Dado 1",
+            line=dict(color="royalblue", width=3),
+        )
+    )
+    
+    fig.add_trace(
+        go.Scatter(
+            x=df["Partida"],
+            y=df["Proporción dado 2"],
+            mode="lines",
+            name="🔶 Dado 2",
+            line=dict(color="darkorange", width=3),
+        )
+    )
+    
+    fig.add_trace(
+        go.Scatter(
+            x=df["Partida"],
+            y=df["Proporción empates"],
+            mode="lines",
+            name="🤝 Empates",
+            line=dict(color="forestgreen", width=3),
+        )
+    )
+    
+    fig.update_layout(
+        xaxis_title="Partida",
+        yaxis_title="Proporción",
+        yaxis=dict(range=[0, 1]),
+        legend_title="",
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
+    
     st.subheader("Detalle de tiradas")
     st.dataframe(df,hide_index=True,use_container_width=True,
         column_config={
