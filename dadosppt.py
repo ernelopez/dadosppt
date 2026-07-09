@@ -51,8 +51,8 @@ if st.button("🎲 Tirar"):
         ps=g1/(g1+g2) if g1+g2 else 0
         partidas.append({"Partida":i,"Ganador":gan,
         "Ganadas dado 1":g1,"Ganadas dado 2":g2,"Empates":emp,
-        "Proporción dado 1":p1,"Proporción dado 2":p2,
-        "Proporción empates":pe,"Proporción G1 sin empates":ps})
+        "Proporción 🔷":p1,"Proporción 🔶":p2,
+        "Proporción empates":pe,"Proporción 🔷 sin empates":ps})
         if n<=1000 or i%(max(1,n//200))==0:
             prog.progress(i/n)
     prog.empty()
